@@ -1,4 +1,40 @@
-const TreeView = ({
+import React, { FC, ReactElement, useEffect } from "react";
+// import logo from "./logo.svg";
+import "./App.css";
+
+const data = {
+  lorem: {
+    ipsum: "dolor sit",
+    amet: {
+      consectetur: "adipiscing",
+      elit: [
+        "duis",
+        "vitae",
+        {
+          semper: "orci",
+        },
+        {
+          est: "sed ornare",
+        },
+        "etiam",
+        ["laoreet", "tincidunt"],
+        ["vestibulum", "ante"],
+      ],
+    },
+    ipsum: "primis",
+  },
+};
+
+interface TreeViewProps {
+  data: Object;
+  toggled?: String;
+  name?: String | null;
+  isLast?: Boolean;
+  isChildElement?: Boolean;
+  isParentToggled?: Boolean;
+}
+
+const TreeView: FC<TreeViewProps> = ({
   data,
   toggled = true,
   name = null,
@@ -49,28 +85,8 @@ const TreeView = ({
   );
 };
 
-const data = {
-  lorem: {
-    ipsum: "dolor sit",
-    amet: {
-      consectetur: "adipiscing",
-      elit: [
-        "duis",
-        "vitae",
-        {
-          semper: "orci",
-        },
-        {
-          est: "sed ornare",
-        },
-        "etiam",
-        ["laoreet", "tincidunt"],
-        ["vestibulum", "ante"],
-      ],
-    },
-    ipsum: "primis",
-  },
+const App = () => {
+  return <TreeView data={data} name="data" />;
 };
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <TreeView data={data} name="data" />
-);
+
+export default App;
